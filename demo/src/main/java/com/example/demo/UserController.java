@@ -37,4 +37,11 @@ public class UserController {
     public void deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
     }
+
+    @GetMapping("/name-by-email")
+    public String getNameByEmail(@RequestParam String email) {
+        system.out.println()
+        return userService.getNameByEmail(email)
+                .orElse("User not found");
+    }
 }

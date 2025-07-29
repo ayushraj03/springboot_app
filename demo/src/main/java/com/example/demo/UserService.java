@@ -32,4 +32,8 @@ public class UserService {
     public void deleteUser(String id) {
         userRepository.deleteById(id);
     }
+
+    public Optional<String> getNameByEmail(String email) {
+        return userRepository.findByEmail(email).map(User::getName);
+    }
 }

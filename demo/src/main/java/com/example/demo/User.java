@@ -3,12 +3,15 @@ package com.example.demo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document(collection = "users")
 public class User {
     @Id
     private String id;
     private String name;
     private String email;
+    private ProfessionalDetail professionalDetail;  // ✅ New field
 
     public User() {}
 
@@ -17,11 +20,12 @@ public class User {
         this.email = email;
     }
 
+    // Getters & setters
+
     public String getId() {
         return id;
     }
 
-    // ✅ Add this missing method
     public void setId(String id) {
         this.id = id;
     }
@@ -40,5 +44,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public ProfessionalDetail getProfessionalDetail() {
+        return professionalDetail;
+    }
+
+    public void setProfessionalDetail(ProfessionalDetail professionalDetail) {
+        this.professionalDetail = professionalDetail;
     }
 }

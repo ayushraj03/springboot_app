@@ -36,4 +36,16 @@ public class UserService {
     public Optional<String> getNameByEmail(String email) {
         return userRepository.findByEmail(email).map(User::getName);
     }
+
+    public User addProfessionalDetail(String id, ProfessionalDetail detail) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setProfessionalDetail(detail);
+            return userRepository.save(user);
+        } else {
+            throw new RuntimeException("User not found with id: " + id);
+        }
+    }
+
 }

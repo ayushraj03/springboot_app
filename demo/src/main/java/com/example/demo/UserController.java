@@ -40,8 +40,13 @@ public class UserController {
 
     @GetMapping("/name-by-email")
     public String getNameByEmail(@RequestParam String email) {
-        system.out.println()
         return userService.getNameByEmail(email)
                 .orElse("User not found");
     }
+
+    @PatchMapping("/{id}/professional-detail")
+    public User addProfessionalDetail(@PathVariable String id, @RequestBody ProfessionalDetail detail) {
+        return userService.addProfessionalDetail(id, detail);
+    }
+
 }
